@@ -1,0 +1,12 @@
+janela 80/25
+abrir o programa como administrador
+desativar opção de back up:
+  exc -> menu -> options -> back ups -> enter para off -> save current settings
+XX.prg
+hbmk2 XX.prg (criar arquivo executavel)
+dir(checa se criou)
+XX.exe (executa o arquivo)
+
+q XX.prg para criar um arquivo ou para entrar neste arquivo
+
+replicate(caracter para replicar,quantidade)
