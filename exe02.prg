@@ -9,6 +9,6 @@ nPeso := 0
 @ 04,01 say "Peso: "
 
 @ 02,07 get cNome
-@ 03,08 get nIdade
-@ 04,07 get nPeso
+@ 03,08 get nIdade picture "999" valid nIdade >= 0
+@ 04,07 get nPeso picture "@E 999.9" valid nPeso >= 0
 read
