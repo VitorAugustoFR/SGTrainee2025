@@ -1,6 +1,6 @@
-cTeclaW := Asc('w')
-cTeclaA := Asc('a')
-cTeclaS := Asc('s')
-cTeclaD := Asc('d')
+cTeclaCima := LastKey()
+cTeclaEsquerda := LastKey()
+cTeclaBaixo := LastKey()
+cTeclaDireita := LastKey
 
-@ 01,01 say Str(cTeclaD)
+@ 01,01 say Str(cTeclacima)
