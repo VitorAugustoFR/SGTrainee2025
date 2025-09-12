@@ -1,5 +1,5 @@
 clear
-nNumeroUm := 0
+nNumeroUm   := 0
 nNumeroDois := 0
 
 @ 01,01 say "Digite o primeiro numero:"
@@ -9,7 +9,7 @@ nNumeroDois := 0
 @ 02,25 get nNumeroDois
 read
 
-nProduto := nNumeroUm * nNumeroDois
+nProduto    := nNumeroUm * nNumeroDois
 
 @ 05,01 say "O produto dos numeros " + AllTrim(Str(nNumeroUm)) + " * " + AllTrim(Str(nNumeroDois)) + " = " + AllTrim(Str(nProduto))  
 

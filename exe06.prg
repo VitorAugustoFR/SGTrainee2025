@@ -1,5 +1,5 @@
 Clear
-nNumeroUm := 0
+nNumeroUm   := 0
 nNumeroDois := 0
 nNumeroTres := 0
 
@@ -12,7 +12,7 @@ nNumeroTres := 0
 @ 03,19 get nNumeroDois
 @ 04,20 get nNumeroTres
 read
-nMedia := (nNumeroUm + nNumeroDois + nNumeroTres) / 3
+nMedia       := (nNumeroUm + nNumeroDois + nNumeroTres) / 3
 Clear
 @ 01,01 say "A media dos numeros " + AllTrim(Str(nNumeroUm)) + ", " + AllTrim(Str(nNumeroDois)) + ", " + AllTrim(Str(nNumeroTres)) + " e:"
 @ 02,13 say AllTrim(Str(nMedia))

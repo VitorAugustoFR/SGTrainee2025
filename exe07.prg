@@ -1,5 +1,5 @@
 clear
-nNumeroUm := 0
+nNumeroUm   := 0
 nNumeroDois := 0
 
 @ 01,01 say "Digite dois valores para realizar as quatro operacoes:"

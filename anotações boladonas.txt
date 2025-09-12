@@ -9,4 +9,17 @@ XX.exe (executa o arquivo)
 
 q XX.prg para criar um arquivo ou para entrar neste arquivo
 
+set scoreBoard off
+	elimina tracinho que apaga o quadro
+
 replicate(caracter para replicar,quantidade)
+
+emite um som em uma frequencia de livre escolha por um numero determinado de tempo
+Tone(Frequencia,tempo)
+Tone(500,1)
+
+temporizador
+inKey(xtempo)
+	retorna o codigo da tecla pressionada
+
+quando se soma ou subtrai uma data, ele sempre ira faze-lo em dias

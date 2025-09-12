@@ -1,7 +1,7 @@
 clear
-cNome := Space(50)
+cNome  := Space(50)
 nIdade := 0
-nPeso := 0
+nPeso  := 0
 
 @ 01,01 say "Digite:"
 @ 02,01 say "Nome: "

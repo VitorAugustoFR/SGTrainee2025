@@ -1,6 +1,3 @@
-cTeclaCima := LastKey()
-cTeclaEsquerda := LastKey()
-cTeclaBaixo := LastKey()
-cTeclaDireita := LastKey
-
-@ 01,01 say Str(cTeclacima)
+clear
+cTecla := inkey(0)
+@ 01,01 say Str(cTecla)
