@@ -1,0 +1,153 @@
+abrir no editor lá
+q nomeDoArquivo.prg
+janela 80/25
+abrir o programa como administrador
+desativar opção de back up:
+  exc -> menu -> options -> back ups -> enter para off -> save current settings
+XX.prg
+hbmk2 XX.prg (criar arquivo executavel)
+dir(checa se criou)
+XX.exe (executa o arquivo)
+
+debug
+hbmk2 nomeDoArquivo.prg
+q XX.prg para criar um arquivo ou para entrar neste arquivo
+
+checar se criou o executavel
+dir
+set scoreBoard off
+	elimina tracinho que apaga o quadro
+
+executar
+nomeDoArquivo.exe
+replicate(caracter para replicar,quantidade)
+
+Convert.ToString do harbour
+str(váriavelNumero)
+emite um som em uma frequencia de livre escolha por um numero determinado de tempo
+Tone(Frequencia,tempo)
+Tone(500,1)
+
+excluir espaços
+alltrim
+temporizador
+inKey(xtempo)
+	retorna o codigo da tecla pressionada
+
+Reserva espaço na memória para string
+nVariavel := space(tamanho da variavel)
+
+get sempre recebe em string
+
+checa se é decimal
+IsDec(número)
+
+Delimita o número de casas
+ex:
+	int:
+		picture"999"
+	float:
+		picture"999.99"
+
+converte . para ,
+@E
+
+faz o papel do str com mascara
+transform(Variavel, mascara)
+ex:
+transform(nIdade, "@E 999") 
+
+sempre usar o endif(estava tendo problemas com)
+
+checa e valida entrada de número
+valid nNumero >= 0
+
+duplica a linha desenhada
+@ 00,00 to xx,xx double
+
+Limpa a área selecionada
+@ 00,00 clear to xx,xx
+
+Mascara que torna string em maiusculo
+"@!"
+
+insere a data atual (do pc)
+date()
+
+cria uma data vazia
+CToD("")(caracter to Date)
+
+Passa a data 
+CtoD("01,01,24")
+
+Mudar padrao do americano para o britânico
+set date brit ou british
+
+Muda set de ano para até 2039
+set epoch to 1940
+
+Liga os séculos(os 4 caracteres do ano)
+set century on
+
+Transforma data em string
+DToC(Date to caracter)
+
+somando ou subtraindo datas, se adquire dias
+
+Estrutura do for
+
+for i := n to maxN
+	sngj
+next
+
+inicializar numerico com zero o torna vazio
+nNumero := 0
+
+Funciona que nem em python(Sem {} e sem ;)
+ Precisa de endif
+	if elseif else endif
+
+Conta o número caracteres em uma váriavel
+nCaractere := Len(cVariavel)
+
+Inverte os caracteres
+cStringEspecifica := SubStr(cVariavel, posição do caractere, quantidade de caracteres que vai pegar(para inverter usar apenas 1)
+
+
+$ checa se um dado valor é contido em um outro valor
+
+'a' $ 'abc' V
+'a' $ 'Abc' F
+(Sempre checa se é exatamente igual)
+
+Quebra o loop
+exit
+
+Volta ao inicio do loop
+loop
+
+Sai do loop
+no console:
+alt + c
+
+Checa ultima tecla pressionada
+lastkey() -> codigo da tecla
+27 codigo do ESC
+
+Popup de alerta
+Alert (texto da caixa, opção 1, opção 2)
+
+Para todo o console
+set color 'Cor caractere/cor de fundo'
+
+Colocar ao fim de get e/ou say
+color 'Cor caractere/cor de fundo'
+
+faz com qur
+set wrap on
+
+message ira aparecer no numero que colocar
+set message to (Numero da linha)
+
+prompt 'hfbg' message 'nskjdgfnjksdnf'
+menu to nOpcao

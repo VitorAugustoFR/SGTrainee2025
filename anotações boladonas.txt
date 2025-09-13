@@ -23,3 +23,11 @@ inKey(xtempo)
 	retorna o codigo da tecla pressionada
 
 quando se soma ou subtrai uma data, ele sempre ira faze-lo em dias
+
+cores:
+W/letra da cor
+R=vermelho
+w=Branco
+G=Verde
+N=preto
+B=Azul
