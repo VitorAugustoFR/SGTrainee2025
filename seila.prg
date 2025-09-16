@@ -8,13 +8,13 @@
 */
 clear
 //Player
-cPersonagem := "G/G"
-cArma := "B/B"
-nHspd := 40
-nVspd := 12
+cPersonagem     := "G/G"
+cArma           := "B/B"
+nHspd           := 40
+nVspd           := 12
 //nPosicaoPlayer := {Vspd,Hspd}
 nVidaPersonagem := 10
-nUltimaTecla := inkey()
+nUltimaTecla    := inkey()
 //nUltimoW := 0 
 //nUltimoS := 0 
 //nUltimoA := 0 
@@ -23,13 +23,13 @@ nUltimaTecla := inkey()
 //cInimigoPos := {nHspdInimigo, nVspdInimigo}
 //nColisaoHEstatica := {Numeros onde existem objetos colidiveis horizontalmente}
 //nColisaoVEstatica := {Numeros onde existem objetos colidiveis verticalmente}
-cInimigo := "R/R"
-nVidaInimigo := 2
-nHspdInimigo := 15
-nVspdInimigo := 15
-lViuPlayer := .f.
-nDistanciaH := nHspd - nHspdInimigo
-nDistanciaV := nVspd - nVspdInimigo
+cInimigo        := "R/R"
+nVidaInimigo    := 2
+nHspdInimigo    := 15
+nVspdInimigo    := 15
+lViuPlayer      := .f.
+nDistanciaH     := nHspd - nHspdInimigo
+nDistanciaV     := nVspd - nVspdInimigo
     
 
 do while .t.
@@ -41,7 +41,7 @@ do while .t.
         @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
         @ nVspd,nHspd say " " Color cPersonagem 
 
-        nMovAleatorio := hb_RandomInt(1,2)
+        nMovAleatorio     := hb_RandomInt(1,2)
         nDirecaoAleatoria := hb_RandomInt(1,2)
         @ 01,01 say "Vida" + Str(nVidaPersonagem)
 
@@ -72,6 +72,7 @@ do while .t.
 
         //ataque player
         if LastKey() == 102 .or. LastKey() == 70
+            @ (nHspd - 1),nVspd say " " Color cArma
             if nUltimaTecla == 65 .or. nUltimaTecla == 97
                 @ (nHspd - 1),nVspd say " " Color cArma
             elseif nUltimaTecla == 68 .or. nUltimaTecla == 100
