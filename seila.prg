@@ -14,7 +14,7 @@ nHspd           := 40
 nVspd           := 12
 //nPosicaoPlayer := {Vspd,Hspd}
 nVidaPersonagem := 10
-nUltimaTecla    := inkey()
+//nUltimaTecla    := inkey()
 //nUltimoW := 0 
 //nUltimoS := 0 
 //nUltimoA := 0 
@@ -71,18 +71,15 @@ do while .t.
         end if
 
         //ataque player
-        if LastKey() == 102 .or. LastKey() == 70
-            @ (nHspd - 1),nVspd say " " Color cArma
-            if nUltimaTecla == 65 .or. nUltimaTecla == 97
-                @ (nHspd - 1),nVspd say " " Color cArma
-            elseif nUltimaTecla == 68 .or. nUltimaTecla == 100
-                @ (nHspd + 1),nVspdc say " " Color cArma
-            elseif nUltimaTecla == 87 .or. nUltimaTecla == 119
-                @ nHspd,(nVspd - 1) say " " Color cArma
-            elseif nUltimaTecla == 83 .or. nUltimaTecla == 115
-                @ nHspd,(nVspd + 1) say " " Color cArma
-            end if
-        end
+        if LastKey() == 5
+            @ (nVspd - 1),nHspd say " " Color cArma
+        elseif LastKey() == 24
+            @ (nVspd + 1),nHspd say " " Color cArma
+        elseif LastKey() == 19
+            @ nVspd,(nHspd - 1) say " " Color cArma
+        elseif LastKey() == 4
+            @ nVspd,(nHspd + 1) say " " Color cArma
+        end if
 
         //Inimigo
         //Enquanto a vida do inimigo for maior que zero
@@ -91,9 +88,9 @@ do while .t.
             // if nHspd <= (nHspdInimigo + 5) .or. (nHspdInimigo - 5) .or. (nHspdInimigo + 5) .or. (nHspdInimigo + 5) .or.
 
             //Checa se o player esta no campo de target do inimigo
-            if (nDistanciaH < 2 .and. nDistanciaH > -2) .or. (nDistanciaV < 2 .and. nDistanciaV > -2)
+            if (nDistanciaH < 15 .and. nDistanciaH > -15) .or. (nDistanciaV < 5 .and. nDistanciaV > -5)
                 lViuPlayer := .t.
-            elseif nDistanciaH > 2 .or. nDistanciaH < -2 .or. nDistanciaV > 2 .or. nDistanciaV < -2
+            elseif (nDistanciaH > 20 .or. nDistanciaH < -20) .or. (nDistanciaV > 8 .or. nDistanciaV < -8)
                 lViuPlayer := .f.
             end if
 
@@ -112,26 +109,26 @@ do while .t.
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo--
                 end if
-            @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
             //comportamento do inimigo após ver o player
             elseif lViuPlayer == .t.
-                if nDistanciaH > 0 .and. nDistanciaH < 2
+                if nDistanciaH > 0 .and. nDistanciaH < 15
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nHspdInimigo++
-                elseif nDistanciaV > 0 .and. nDistanciaV < 2
+                elseif nDistanciaV > 0 .and. nDistanciaV < 5
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo++
-                elseif nDistanciaH < 0 .and. nDistanciaH > -2
+                elseif nDistanciaH < 0 .and. nDistanciaH > -15
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nHspdInimigo--
-                elseif nDistanciaV < 0 .and. nDistanciaH > -2
+                elseif nDistanciaV < 0 .and. nDistanciaH > -5
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo--
                 end if
-            @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
             end if
+            @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
+        elseif
+            
         end if
-        //Tone(500,1)
 
         @ 00,00 to 24,79
         inkey(0)
