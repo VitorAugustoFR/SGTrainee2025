@@ -1,4 +1,5 @@
 clear
+
 cNome  := Space(50)
 nIdade := 0
 nPeso  := 0

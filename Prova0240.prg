@@ -46,10 +46,10 @@ read
 
 @ 05,14 get cNome    picture ("@!")       valid !Empty(cNome)
 @ 05,54 get nIdade   picture("@E 999")    valid !Empty(nIdade)
-@ 06,14 get cSexo    picture ("@!")       valid cSexo == "M" .or. cSexo == "F"
+@ 06,14 get cSexo    picture ("@!")       valid cSexo $ "MF"
 @ 07,14 get nPeso    picture ("@E 999.9") valid !Empty(nPeso)
 @ 08,14 get nAltura  picture("@E 9.99")   valid !Empty(nAltura)
-@ 09,14 get cFumante picture("@!")        valid cFumante == "S" .or. cFumante == "N"
+@ 09,14 get cFumante picture("@!")        valid cFumante $ "SN"
 read
 
 @ 11,00 to 14,79
@@ -58,13 +58,14 @@ read
 @ 12,01 say "Tipo do plano: " + "  [E]nf  [A]part  [V]ip"
 @ 13,01 say "Abrangencia..: " + "  [R]egional  [N]acional"
 
-@ 12,15 get cTipodePlano picture("@!") valid cTipodePlano == "E" .or. cTipodePlano == "A" .or. cTipodePlano == "V"
-@ 13,15 get cAbrangencia picture("@!") valid cAbrangencia == "R" .or. cAbrangencia == "N"
+@ 12,15 get cTipodePlano picture("@!") valid cTipodePlano $ "EAV"
+@ 13,15 get cAbrangencia picture("@!") valid cAbrangencia $ "RN"
 read
 
 //Calulos
 nImc := nPeso / (nAltura * nAltura)
 nMes := Month(dCotacao)
+nAno := Year(dCotacao)
 
 //Saude Total
 if nIdade           < 30
@@ -147,6 +148,12 @@ endif
 @ 20,42 say "Anual.......: " + Transform(nVidaPura * 12, "@E 99,999.99") + "              "     Color cCorVidaPura
  
 //Validade da cotacao
-dUltimoDiaDoMes := CToD("01/" + AllTrim(Str(nMes + 1)) +"/2025") - 1
+if nMes < 12
+    dUltimoDiaDoMes := CToD("01/" + AllTrim(Str(nMes + 1)) + Alltrim(Str(nAno))) - 1
+else
+    nMes := 1
+    dUltimoDiaDoMes := CToD("01/" + AllTrim(Str(nMes)) + Alltrim(Str(nAno + 1))) - 1
+endif
+
 @ 24,26 say "Cotacao valida ate "  + DToC(dUltimoDiaDoMes)
 Inkey(0)

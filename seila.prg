@@ -14,11 +14,6 @@ nHspd           := 40
 nVspd           := 12
 //nPosicaoPlayer := {Vspd,Hspd}
 nVidaPersonagem := 10
-//nUltimaTecla    := inkey()
-//nUltimoW := 0 
-//nUltimoS := 0 
-//nUltimoA := 0 
-//nUltimoD := 0 
 //Inimigo
 //cInimigoPos := {nHspdInimigo, nVspdInimigo}
 //nColisaoHEstatica := {Numeros onde existem objetos colidiveis horizontalmente}
@@ -27,13 +22,15 @@ cInimigo        := "R/R"
 nVidaInimigo    := 2
 nHspdInimigo    := 15
 nVspdInimigo    := 15
-lViuPlayer      := .f.
 nDistanciaH     := nHspd - nHspdInimigo
 nDistanciaV     := nVspd - nVspdInimigo
     
 
 do while .t.
 
+    nPosicaoArmaV   := nVspd
+    nPosicaoArmaH   := nHspd
+    lViuPlayer      := .f.
     // se a vida do player for maior que 0
     //Transformar em if e criar um do while que engloba tudo
     if nVidaPersonagem > 0
@@ -41,12 +38,12 @@ do while .t.
         @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
         @ nVspd,nHspd say " " Color cPersonagem 
 
-        nMovAleatorio     := hb_RandomInt(1,2)
-        nDirecaoAleatoria := hb_RandomInt(1,2)
+        nMovAleatorio      := hb_RandomInt(1,2)
+        nDirecaoAleatoria  := hb_RandomInt(1,2)
         @ 01,01 say "Vida" + Str(nVidaPersonagem)
 
         //Mov + colisão com a lateral
-        if LastKey() == 65 .or. LastKey() == 97 .and. nHspd > 1//A
+        if LastKey()     == 65 .or. LastKey() == 97  .and. nHspd > 1//A
             //Ultimo A
         @ nVspd,nHspd clear to nVspd,nHspd
             nHspd--
@@ -65,69 +62,77 @@ do while .t.
         end if
         @ nVspd,nHspd say " " Color cPersonagem
 
-        //Reduzir vida do player quando encostar no inimigo
-        if nHspd == nHspdInimigo .and. nVspd == nVspdInimigo
-            nVidaPersonagem--
-        end if
 
         //ataque player
-        if LastKey() == 5
-            @ (nVspd - 1),nHspd say " " Color cArma
-        elseif LastKey() == 24
-            @ (nVspd + 1),nHspd say " " Color cArma
-        elseif LastKey() == 19
-            @ nVspd,(nHspd - 1) say " " Color cArma
-        elseif LastKey() == 4
-            @ nVspd,(nHspd + 1) say " " Color cArma
-        end if
+        switch LastKey()
+            case 5
+                nPosicaoArmaV--
+                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+                exit
+            case 24
+                nPosicaoArmaV++
+                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+                exit
+            case 19
+                nPosicaoArmaH--
+                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+                exit
+            case 4
+                nPosicaoArmaH--
+                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+                exit
+        endswitch
+
+        if nPosicaoArmaV == nVspdInimigo .and. nPosicaoArmaH == nHspdInimigo
+            nVidaInimigo--
+        endif
 
         //Inimigo
         //Enquanto a vida do inimigo for maior que zero
         if nVidaInimigo > 0
+            //Reduzir vida do player quando encostar no inimigo
+            if nHspd == nHspdInimigo .and. nVspd == nVspdInimigo
+                nVidaPersonagem--
+            end if
 
             // if nHspd <= (nHspdInimigo + 5) .or. (nHspdInimigo - 5) .or. (nHspdInimigo + 5) .or. (nHspdInimigo + 5) .or.
 
             //Checa se o player esta no campo de target do inimigo
-            if (nDistanciaH < 15 .and. nDistanciaH > -15) .or. (nDistanciaV < 5 .and. nDistanciaV > -5)
+            if     (nDistanciaH < 8 .and. nDistanciaH > -8) .or. (nDistanciaV < 3 .and. nDistanciaV > -3)
                 lViuPlayer := .t.
-            elseif (nDistanciaH > 20 .or. nDistanciaH < -20) .or. (nDistanciaV > 8 .or. nDistanciaV < -8)
+            elseif (nDistanciaH > 9 .or. nDistanciaH < -9) .or. (nDistanciaV > 5 .or. nDistanciaV < -5)
                 lViuPlayer := .f.
             end if
 
            //Comportamento do inimigo sem ver o player
             if lViuPlayer == .f.
-                if nDirecaoAleatoria == 1 .and. nMovAleatorio == 1
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                @ (nVidaInimigo + 1),nHspdInimigo say "Nao viu o player"
+                @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                if nDirecaoAleatoria     == 1 .and. nMovAleatorio == 1
                     nHspdInimigo++
                 elseif nDirecaoAleatoria == 1 .and. nMovAleatorio == 2
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nHspdInimigo--
                 elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 1
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo++
                 elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 2
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo--
                 end if
             //comportamento do inimigo após ver o player
             elseif lViuPlayer == .t.
-                if nDistanciaH > 0 .and. nDistanciaH < 15
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                @ (nVidaInimigo + 1),nHspdInimigo say "Viu o player"
+                @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                if nDistanciaH     > 0 .and. nDistanciaH < 15
                     nHspdInimigo++
                 elseif nDistanciaV > 0 .and. nDistanciaV < 5
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo++
                 elseif nDistanciaH < 0 .and. nDistanciaH > -15
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nHspdInimigo--
                 elseif nDistanciaV < 0 .and. nDistanciaH > -5
-                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
                     nVspdInimigo--
                 end if
             end if
             @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
-        elseif
-            
+        //elseif
         end if
 
         @ 00,00 to 24,79
@@ -143,4 +148,5 @@ do while .t.
         loop
     end if
 
+    @ nPosicaoArmaV,nPosicaoArmaH clear to nPosicaoArmaV,nPosicaoArmaH
 end do
