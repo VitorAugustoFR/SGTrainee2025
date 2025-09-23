@@ -94,32 +94,32 @@ clear
 @ 06,48 say "serie:1/3 Falta:6; 4/8 8"
 
 //Materia 1
-@ 04,5  get nNotaUmPrimeiroBi  picture "999" valid nNotaUmPrimeiroBi <= 100
-@ 04,10 get nFaltaUmPrimeiroBi picture "999" valid nFaltaUmPrimeiroBi <= 200
-@ 04,16 get nNotaUmSegundoBi   picture "999" valid nNotaUmSegundoBi <= 100
-@ 04,21 get nFaltaUmSegundoBi  picture "999" valid nFaltaUmSegundoBi <= 200
-@ 04,26 get nNotaUmTerceiroBi  picture "999" valid nNotaUmTerceiroBi <= 100
-@ 04,31 get nFaltaUmTerceiroBi picture "999" valid nFaltaUmTerceiroBi <= 200
-@ 04,37 get nNotaUmQuartoBi    picture "999" valid nNotaUmQuartoBi <= 100
-@ 04,42 get nFaltaUmQuartoBi   picture "999" valid nFaltaUmQuartoBi <= 200
+@ 04,5  get nNotaUmPrimeiroBi    picture "999" valid nNotaUmPrimeiroBi  <= 100
+@ 04,10 get nFaltaUmPrimeiroBi   picture "999" valid nFaltaUmPrimeiroBi <= 200
+@ 04,16 get nNotaUmSegundoBi     picture "999" valid nNotaUmSegundoBi   <= 100
+@ 04,21 get nFaltaUmSegundoBi    picture "999" valid nFaltaUmSegundoBi  <= 200
+@ 04,26 get nNotaUmTerceiroBi    picture "999" valid nNotaUmTerceiroBi  <= 100
+@ 04,31 get nFaltaUmTerceiroBi   picture "999" valid nFaltaUmTerceiroBi <= 200
+@ 04,37 get nNotaUmQuartoBi      picture "999" valid nNotaUmQuartoBi    <= 100
+@ 04,42 get nFaltaUmQuartoBi     picture "999" valid nFaltaUmQuartoBi   <= 200
 //Materia 2
-@ 05,5  get nNotaDoisPrimeiroBi  picture "999" valid nNotaDoisPrimeiroBi <= 100
+@ 05,5  get nNotaDoisPrimeiroBi  picture "999" valid nNotaDoisPrimeiroBi  <= 100
 @ 05,10 get nFaltaDoisPrimeiroBi picture "999" valid nFaltaDoisPrimeiroBi <= 200
-@ 05,16 get nNotaDoisSegundoBi   picture "999" valid nNotaDoisSegundoBi <= 100
-@ 05,21 get nFaltaDoisSegundoBi  picture "999" valid nFaltaDoisSegundoBi <= 200
-@ 05,26 get nNotaDoisTerceiroBi  picture "999" valid nNotaDoisTerceiroBi <= 100
+@ 05,16 get nNotaDoisSegundoBi   picture "999" valid nNotaDoisSegundoBi   <= 100
+@ 05,21 get nFaltaDoisSegundoBi  picture "999" valid nFaltaDoisSegundoBi  <= 200
+@ 05,26 get nNotaDoisTerceiroBi  picture "999" valid nNotaDoisTerceiroBi  <= 100
 @ 05,31 get nFaltaDoisTerceiroBi picture "999" valid nFaltaDoisTerceiroBi <= 200
-@ 05,37 get nNotaDoisQuartoBi    picture "999" valid nNotaDoisQuartoBi <= 100
-@ 05,42 get nFaltaTresQuartoBi   picture "999" valid nFaltaTresQuartoBi <= 200
+@ 05,37 get nNotaDoisQuartoBi    picture "999" valid nNotaDoisQuartoBi    <= 100
+@ 05,42 get nFaltaTresQuartoBi   picture "999" valid nFaltaTresQuartoBi   <= 200
 //Materia 3
-@ 06,5  get nNotaTresPrimeiroBi  picture "999" valid nNotaTresPrimeiroBi <= 100
+@ 06,5  get nNotaTresPrimeiroBi  picture "999" valid nNotaTresPrimeiroBi  <= 100
 @ 06,10 get nFaltaTresPrimeiroBi picture "999" valid nFaltaTresPrimeiroBi <= 200
-@ 06,16 get nNotaTresSegundoBi   picture "999" valid nNotaTresSegundoBi <= 100
-@ 06,21 get nFaltaTresSegundoBi  picture "999" valid nFaltaTresSegundoBi <= 200
-@ 06,26 get nNotaTresTerceiroBi  picture "999" valid nNotaTresTerceiroBi <= 100
+@ 06,16 get nNotaTresSegundoBi   picture "999" valid nNotaTresSegundoBi   <= 100
+@ 06,21 get nFaltaTresSegundoBi  picture "999" valid nFaltaTresSegundoBi  <= 200
+@ 06,26 get nNotaTresTerceiroBi  picture "999" valid nNotaTresTerceiroBi  <= 100
 @ 06,31 get nFaltaTresTerceiroBi picture "999" valid nFaltaTresTerceiroBi <= 200
-@ 06,37 get nNotaTresQuartoBi    picture "999" valid nNotaTresQuartoBi <= 100
-@ 06,42 get nFaltaTresQuartoBi   picture "999" valid nFaltaTresQuartoBi <= 200
+@ 06,37 get nNotaTresQuartoBi    picture "999" valid nNotaTresQuartoBi    <= 100
+@ 06,42 get nFaltaTresQuartoBi   picture "999" valid nFaltaTresQuartoBi   <= 200
 read
 
 //Calculo das medias

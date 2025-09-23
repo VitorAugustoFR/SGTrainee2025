@@ -1,8 +1,7 @@
 //set mode(25,80)
 //gdImageLine()   Draws a line between two end points (x1, y1 and x2, y2) with a particular color index.
 /*Para fazer:
-    colocar sistema de combate
-        Para guardar a ultima posição de movimento, guardar numero da ultima tecla de movimento + achar alguma forma de armazenar a ultima tecla de movimento pressionada, sem sobre por a tecla de ataque 
+    consertar o sistema de mov do inimigo
     colocar sistema de knock back
     colocar sistema de colisão de blocos estaticos por array e list
 */
@@ -30,13 +29,13 @@ do while .t.
 
     nPosicaoArmaV   := nVspd
     nPosicaoArmaH   := nHspd
-    lViuPlayer      := .f.
+    lViuPlayer      := 0
     // se a vida do player for maior que 0
     //Transformar em if e criar um do while que engloba tudo
     if nVidaPersonagem > 0
 
         @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
-        @ nVspd,nHspd say " " Color cPersonagem 
+        @ nVspd,nHspd say " " Color cPersonagem
 
         nMovAleatorio      := hb_RandomInt(1,2)
         nDirecaoAleatoria  := hb_RandomInt(1,2)
@@ -64,24 +63,22 @@ do while .t.
 
 
         //ataque player
-        switch LastKey()
-            case 5
-                nPosicaoArmaV--
-                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
-                exit
-            case 24
-                nPosicaoArmaV++
-                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
-                exit
-            case 19
-                nPosicaoArmaH--
-                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
-                exit
-            case 4
-                nPosicaoArmaH--
-                @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
-                exit
-        endswitch
+        if LastKey() == 5
+            nPosicaoArmaV--
+            @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+        elseif LastKey() == 24
+            nPosicaoArmaV++
+            @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+        elseif LastKey() == 19
+            nPosicaoArmaH--
+            @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+        elseif LastKey() == 4
+            nPosicaoArmaH++
+            @ nPosicaoArmaV,nPosicaoArmaH say " " Color cArma
+        else
+            nPosicaoArmaH := -1
+            nPosicaoArmaV := -1
+        endif
 
         if nPosicaoArmaV == nVspdInimigo .and. nPosicaoArmaH == nHspdInimigo
             nVidaInimigo--
@@ -98,41 +95,43 @@ do while .t.
             // if nHspd <= (nHspdInimigo + 5) .or. (nHspdInimigo - 5) .or. (nHspdInimigo + 5) .or. (nHspdInimigo + 5) .or.
 
             //Checa se o player esta no campo de target do inimigo
-            if     (nDistanciaH < 8 .and. nDistanciaH > -8) .or. (nDistanciaV < 3 .and. nDistanciaV > -3)
-                lViuPlayer := .t.
-            elseif (nDistanciaH > 9 .or. nDistanciaH < -9) .or. (nDistanciaV > 5 .or. nDistanciaV < -5)
-                lViuPlayer := .f.
+            if (nDistanciaH < 8 .and. nDistanciaH > -8) .or. (nDistanciaV < 3 .and. nDistanciaV > -3)
+                lViuPlayer := 1
+            else
+                lViuPlayer := 0
             end if
 
-           //Comportamento do inimigo sem ver o player
-            if lViuPlayer == .f.
-                @ (nVidaInimigo + 1),nHspdInimigo say "Nao viu o player"
-                @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
-                if nDirecaoAleatoria     == 1 .and. nMovAleatorio == 1
-                    nHspdInimigo++
-                elseif nDirecaoAleatoria == 1 .and. nMovAleatorio == 2
-                    nHspdInimigo--
-                elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 1
-                    nVspdInimigo++
-                elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 2
-                    nVspdInimigo--
-                end if
-            //comportamento do inimigo após ver o player
-            elseif lViuPlayer == .t.
-                @ (nVidaInimigo + 1),nHspdInimigo say "Viu o player"
-                @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
-                if nDistanciaH     > 0 .and. nDistanciaH < 15
-                    nHspdInimigo++
-                elseif nDistanciaV > 0 .and. nDistanciaV < 5
-                    nVspdInimigo++
-                elseif nDistanciaH < 0 .and. nDistanciaH > -15
-                    nHspdInimigo--
-                elseif nDistanciaV < 0 .and. nDistanciaH > -5
-                    nVspdInimigo--
-                end if
-            end if
+            //Comportamento do inimigo sem ver o player
+            switch lViuPlayer
+                case 0
+                    @ 25,01 say "Nao viu o player"
+                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                    if nDirecaoAleatoria     == 1 .and. nMovAleatorio == 1 .and. nHspdInimigo < 78
+                        nHspdInimigo++
+                    elseif nDirecaoAleatoria == 1 .and. nMovAleatorio == 2 .and. nHspdInimigo > 1
+                        nHspdInimigo--
+                    elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 1 .and. nVspdInimigo < 23
+                        nVspdInimigo++
+                    elseif nDirecaoAleatoria == 2 .and. nMovAleatorio == 2 .and. nVspdInimigo > 1
+                        nVspdInimigo--
+                    end if
+                //comportamento do inimigo após ver o player
+                case 1
+                    @ 25,01 say "Viu o player"
+                    @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
+                    if nDistanciaH     > 0 .and. nDistanciaH < 15 .and. nHspdInimigo < 78
+                        nHspdInimigo++
+                    elseif nDistanciaV > 0 .and. nDistanciaV < 5 .and. nHspdInimigo > 1
+                        nVspdInimigo++
+                    elseif nDistanciaH < 0 .and. nDistanciaH > -15 .and. nVspdInimigo < 23
+                        nHspdInimigo--
+                    elseif nDistanciaV < 0 .and. nDistanciaH > -5 .and. nVspdInimigo > 1
+                        nVspdInimigo--
+                    end if
+                end switch
             @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
-        //elseif
+        //else
+            
         end if
 
         @ 00,00 to 24,79

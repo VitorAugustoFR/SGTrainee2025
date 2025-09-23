@@ -1,5 +1,11 @@
-dData := Date()
-nMes := Month(dData)
-dUltimoDia := CToD("01/" + AllTrim(Str(nMes)) +"/2025") - 1
+set epoch to 1940
+set date british
+
 clear
-@ 01,01 say dUltimoDia
+dNascimento := CToD("")
+@ 01,01 get dNascimento
+read
+
+nIdade := (date() - dNascimento)/365
+
+@ 05,05 say "Idade: " + AllTrim(Str(nIdade))

@@ -42,7 +42,12 @@ do while .t.
     @ 03,48 get nOrcamento
     read
     if LastKey() == 27
-        exit
+        nOpcao := Alert("Deseja sair?", {"Sim","Nao"})
+        if nOpcao == 1
+            exit
+        elseif nOpcao == 2
+            loop
+        end if
     end if
 
     inkey(0)
@@ -85,7 +90,14 @@ do while .t.
     @ 08,44 get dCompraTres                                  valid !Empty(dCompraTres)
     read
     if LastKey() == 27
-        loop
+        nOpcao2 := Alert("O que deseja fazer?", {"Prossegir","Reinserir","Sair"})
+        if nOpcao2 == 1
+
+        elseif nOpcao2 == 2
+            loop
+        elseif nOpcao2 == 3
+            exit
+        end if
     end if
     nProdutoTresResultado := nProdutoTresQuantidade * nProdutoTresPreco
     nResultadoFinal       += nProdutoTresResultado
@@ -122,7 +134,7 @@ do while .t.
     @ 04,14 to 12,62 double
     @ 12,14 to 15,62 double
 
-    @ 03,25 say "Nota Fiscal:"
+    @ 03,32 say "Nota Fiscal:"
     @ 05,15 say " Produto  | Preco  |  Qnt   |  Data  |  Total "
     @ 06,15 say cProdutoUm   + "|" + transform(nProdutoUmPreco, "@E 9,999.99")   + "|" + transform(nProdutoUmQuantidade, "@E 9,999.99")   + "|" + DToC(dCompraUm)   + "|" + transform(nProdutoUmResultado, "@E 9,999.99")
     @ 07,15 say cProdutoDois + "|" + transform(nProdutoDoisPreco, "@E 9,999.99") + "|" + transform(nProdutoDoisQuantidade, "@E 9,999.99") + "|" + DToC(dCompraDois) + "|" + transform(nProdutoDoisResultado, "@E 9,999.99")
@@ -134,4 +146,5 @@ do while .t.
     @ 14,15 say "Resultado Final: R$"           + AllTrim(transform(nResultadoFinal, "@E 999,999.99"))             Color cCor
 
     inkey(0)
+    Alert("Agradecemos a sua preferencia")
 end do

@@ -24,12 +24,14 @@ replicate(caracter para replicar,quantidade)
 
 Convert.ToString do harbour
 str(váriavelNumero)
+
 emite um som em uma frequencia de livre escolha por um numero determinado de tempo
 Tone(Frequencia,tempo)
 Tone(500,1)
 
 excluir espaços
 alltrim
+
 temporizador
 inKey(xtempo)
 	retorna o codigo da tecla pressionada
@@ -135,7 +137,9 @@ lastkey() -> codigo da tecla
 27 codigo do ESC
 
 Popup de alerta
-Alert (texto da caixa, opção 1, opção 2)
+Alert (texto da caixa, cor, {opção 1, opção 2})
+ex:
+	Alert("Foda", "W/B", {"Legal","Nao Legal"})
 
 Para todo o console
 set color 'Cor caractere/cor de fundo'
