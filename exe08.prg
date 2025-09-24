@@ -90,7 +90,7 @@ do while .t.
     @ 08,44 get dCompraTres                                  valid !Empty(dCompraTres)
     read
     if LastKey() == 27
-        nOpcao2 := Alert("O que deseja fazer?", {"Prossegir","Reinserir","Sair"})
+        nOpcao2 := Alert("O que deseja fazer?", {"Continuar","","Sair"})
         if nOpcao2 == 1
 
         elseif nOpcao2 == 2

@@ -5,6 +5,7 @@
     colocar sistema de knock back
     colocar sistema de colisão de blocos estaticos por array e list
 */
+
 clear
 //Player
 cPersonagem     := "G/G"
@@ -33,6 +34,15 @@ do while .t.
     // se a vida do player for maior que 0
     //Transformar em if e criar um do while que engloba tudo
     if nVidaPersonagem > 0
+
+        if LastKey() == 27
+            nOpcao1 := Alert("Pause", {"Continuar","Sair"}, "RB+/W+")
+            if nOpcao1 == 1
+                
+            elseif nOpcao1 == 2
+                exit
+            endif
+        endif
 
         @ nVspdInimigo,nHspdInimigo say " " Color cInimigo
         @ nVspd,nHspd say " " Color cPersonagem
@@ -119,13 +129,13 @@ do while .t.
                 case 1
                     @ 25,01 say "Viu o player"
                     @ nVspdInimigo,nHspdInimigo clear to nVspdInimigo,nHspdInimigo
-                    if nDistanciaH     > 0 .and. nDistanciaH < 15 .and. nHspdInimigo < 78
+                    if nDistanciaH     > 0 .and. nDistanciaH < 8 .and. nHspdInimigo < 78
                         nHspdInimigo++
-                    elseif nDistanciaV > 0 .and. nDistanciaV < 5 .and. nHspdInimigo > 1
+                    elseif nDistanciaV > 0 .and. nDistanciaV < 3 .and. nHspdInimigo > 1
                         nVspdInimigo++
-                    elseif nDistanciaH < 0 .and. nDistanciaH > -15 .and. nVspdInimigo < 23
+                    elseif nDistanciaH < 0 .and. nDistanciaH > -8 .and. nVspdInimigo < 23
                         nHspdInimigo--
-                    elseif nDistanciaV < 0 .and. nDistanciaH > -5 .and. nVspdInimigo > 1
+                    elseif nDistanciaV < 0 .and. nDistanciaH > -3 .and. nVspdInimigo > 1
                         nVspdInimigo--
                     end if
                 end switch

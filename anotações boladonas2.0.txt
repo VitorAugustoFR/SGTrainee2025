@@ -115,6 +115,12 @@ nCaractere := Len(cVariavel)
 Inverte os caracteres
 cStringEspecifica := SubStr(cVariavel, posição do caractere, quantidade de caracteres que vai pegar(para inverter usar apenas 1)
 
+subStr(Variavel, posição, quantidade que vai pegar a partir desta posição
+ex:
+	cNome := "Gabriel Rodriguez"
+	cNome := subStr(cNome, 9, 10)
+	cNome == "Rodriguez"
+
 
 $ checa se um dado valor é contido em um outro valor
 
@@ -137,9 +143,9 @@ lastkey() -> codigo da tecla
 27 codigo do ESC
 
 Popup de alerta
-Alert (texto da caixa, cor, {opção 1, opção 2})
+Alert (texto da caixa, {opção 1, opção 2}, cor)
 ex:
-	Alert("Foda", "W/B", {"Legal","Nao Legal"})
+	Alert("Legal", {"Legal","Nao Legal"}, "W/B")
 
 Para todo o console
 set color 'Cor caractere/cor de fundo'
