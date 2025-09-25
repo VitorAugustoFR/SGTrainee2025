@@ -1,3 +1,9 @@
 clear
-cTecla := inkey(0)
-@ 01,01 say Str(cTecla)
+cPalavra := "ABCDEFGHIJ"
+cPalavra2 := Space(1)
+
+@ 01,01 get cPalavra2
+read
+nPosicao := cPalavra2 $ cPalavra
+@ 05,05 say nPosicao
+Inkey(0)
