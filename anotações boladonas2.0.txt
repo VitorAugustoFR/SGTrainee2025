@@ -76,6 +76,7 @@ Mascara que torna string em maiusculo
 insere a data atual (do pc)
 date()
 
+
 cria uma data vazia
 CToD("")(caracter to Date)
 
@@ -161,3 +162,6 @@ set message to (Numero da linha)
 
 prompt 'hfbg' message 'nskjdgfnjksdnf'
 menu to nOpcao
+
+val(cNumero)
+transforma caracter em numero
